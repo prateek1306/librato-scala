@@ -1,5 +1,27 @@
+# Compiled Code #
 *.class
+*/target/**
+
+# Package Files #
+*.jar
+
+# Log Files #
 *.log
+
+# IntelliJ Files #
+.idea
+*.iml
+*.ipr
+*.iws
+
+# System Files #
+.DS_Store
+
+/project/project/
+/project/target/
+/target/
+logs
+/.idea
 
 # sbt specific
 .cache

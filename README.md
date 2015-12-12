@@ -1,2 +1,2 @@
 # librato-scala
-Scala language bindings for Librato API
+Lightweight Scala library for Librato API
