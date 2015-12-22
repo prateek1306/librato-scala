@@ -12,18 +12,11 @@ object UploadRequest {
 
 class UploadRequest(helper: URLConnectionHelper) {
 
-  private var response: Response = null
-
-  def isSuccessful: Boolean = {
-    response != null && response.responseCode / 100 == 2
-  }
-
-  def upload: Response = {
+  def upload: Unit = {
     UploadRequest.NETWORK_SERVICE.execute(new Runnable {
       override def run(): Unit = {
-        response = helper.call
+        helper.call
       }
     })
-    response
   }
 }

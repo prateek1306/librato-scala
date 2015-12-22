@@ -22,9 +22,7 @@ abstract class Measurement(name: String, value: Number) {
   }
 
   var period: Int = -1
-
   var description: String = null
-
   var displayName: String = null
 
   /** ***************************************

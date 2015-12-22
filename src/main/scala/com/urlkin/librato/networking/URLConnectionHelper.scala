@@ -36,7 +36,7 @@ class URLConnectionHelper {
     val isSuccess: Boolean = responseCode / 100 == 2
     val response: Response = getResponse(connection, isSuccess)
     response.setResponseCode(responseCode)
-    response
+    return response
   }
 
   def setPostParam(jsonObject: JSONObject) {
@@ -102,6 +102,6 @@ class URLConnectionHelper {
         }
       }
     }
-    stringBuilder
+    return stringBuilder
   }
 }
