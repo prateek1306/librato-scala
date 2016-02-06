@@ -60,11 +60,11 @@ class LibratoBatch {
     this
   }
 
-  def onNewMetric = {
+  private def onNewMetric = {
     if (gauges.size >= batchSize) post
   }
 
-  def prepareResponse(glist: mutable.MutableList[Gauge]): JSONObject = {
+  private def prepareResponse(glist: mutable.MutableList[Gauge]): JSONObject = {
     val json = new JSONObject()
     json.put("source", source)
     val gaugeArray: JSONArray = new JSONArray()
@@ -75,15 +75,17 @@ class LibratoBatch {
     return json
   }
 
-  def postToLibrato(json: JSONObject): Unit = {
+  private def postToLibrato(json: JSONObject): Unit = {
     val wrh = new URLConnectionHelper(url)
     wrh.setPostParam(json)
     wrh.setAuthDetails(username, token)
     val helper = new UploadRequest(wrh)
+    System.out.println("Uploading to librato : " + json.toString)
     helper.upload
+    System.out.println("Uploaded to librato")
   }
 
-  def post: Unit = {
+  private def post: Unit = {
     var toUpload: mutable.MutableList[Gauge] = new mutable.MutableList[Gauge]
     this.synchronized {
       toUpload = gauges
