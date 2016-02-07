@@ -29,9 +29,10 @@ class LibratoBatch {
     s != null && !s.isEmpty
   }
 
-  def setBatchSize(size: Int) = {
+  def setBatchSize(size: Int) : LibratoBatch = {
     if (size > 0)
       batchSize = size
+    this
   }
 
   def setUsername(u: String): LibratoBatch = {
@@ -85,7 +86,7 @@ class LibratoBatch {
     System.out.println("Uploaded to librato")
   }
 
-  private def post: Unit = {
+  def post: Unit = {
     var toUpload: mutable.MutableList[Gauge] = new mutable.MutableList[Gauge]
     this.synchronized {
       toUpload = gauges
